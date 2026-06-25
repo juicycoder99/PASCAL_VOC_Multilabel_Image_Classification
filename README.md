@@ -1,10 +1,8 @@
-# CS596 Research Topics — Assignment 3: Multi-label Image Classification (PASCAL VOC 2007)
-
-Coursework for **CS596 – Special Topics on Deep Learning**, Bishop's University.
+# Multi-label Image Classification on PASCAL VOC 2007
 
 Predicting which of the 20 PASCAL VOC classes are present in each image (a 20-way present/absent
-multi-label task), evaluated by mean Average Precision (mAP). The solution is in
-[`A3_VOC_Multilabel_Classification.ipynb`](A3_VOC_Multilabel_Classification.ipynb).
+multi-label task), evaluated by mean Average Precision (mAP). The full implementation and analysis
+is in [`voc_multilabel_classification.ipynb`](voc_multilabel_classification.ipynb).
 
 ## Experiments and results (RTX 3080, 20 epochs each)
 
@@ -19,11 +17,11 @@ multi-label task), evaluated by mean Average Precision (mAP). The solution is in
 
 Fine-tuning the pretrained AlexNet wins by a wide margin: VOC2007 has only ~5,000 training images,
 too few to learn good features from scratch. The self-designed `MyNet` (batch norm + residual
-connections) trains stably from scratch and beats both from-scratch baselines, as Part B requires.
+connections) trains stably from scratch and beats both from-scratch baselines.
 
 ## Code
 
-- `classifiers.py` — `SimpleNet` (Part A warm-up) and `MyNet` (Part B, self-designed residual net).
+- `classifiers.py` — `SimpleNet` and `MyNet` (self-designed residual net).
 - `voc_data.py` — builds 20-dim multi-label targets and 224×224 image tensors from the VOC
   annotations (downloaded automatically by `torchvision`).
 
@@ -31,14 +29,14 @@ connections) trains stably from scratch and beats both from-scratch baselines, a
 
 ```bash
 pip install torch torchvision numpy pandas matplotlib scikit-learn   # CUDA build of torch for GPU
-jupyter notebook A3_VOC_Multilabel_Classification.ipynb
+jupyter notebook voc_multilabel_classification.ipynb
 ```
 
 ## Files
 
 | File | Description |
 |------|-------------|
-| `A3_VOC_Multilabel_Classification.ipynb` | Full solution (Parts A and B) |
+| `voc_multilabel_classification.ipynb` | Full implementation and analysis (Parts A and B) |
 | `classifiers.py` | SimpleNet and MyNet |
 | `voc_data.py` | VOC multi-label data preparation |
-| `Assignment 3.pdf` | Assignment description |
+| `PROJECT_BRIEF.pdf` | Project brief (goals, objectives, outcomes) |
